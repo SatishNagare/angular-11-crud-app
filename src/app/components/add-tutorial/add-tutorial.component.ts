@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Tutorial } from 'src/app/models/tutorial.model';
 import { TutorialService } from 'src/app/services/tutorial.service';
 
@@ -15,7 +16,7 @@ export class AddTutorialComponent implements OnInit {
   };
   submitted = false;
 
-  constructor(private tutorialService: TutorialService) { }
+  constructor(private tutorialService: TutorialService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -31,6 +32,7 @@ export class AddTutorialComponent implements OnInit {
         response => {
           console.log(response);
           this.submitted = true;
+          this.router.navigate(['/tutorials']);
         },
         error => {
           console.log(error);

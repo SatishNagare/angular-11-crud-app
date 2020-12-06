@@ -40,6 +40,7 @@ export class TutorialDetailsComponent implements OnInit {
 
   updatePublished(status: boolean): void {
     const data = {
+      id: this.currentTutorial.id,
       title: this.currentTutorial.title,
       description: this.currentTutorial.description,
       published: status
@@ -63,6 +64,7 @@ export class TutorialDetailsComponent implements OnInit {
         response => {
           console.log(response);
           this.message = response.message;
+          this.router.navigate(['/tutorials']);
         },
         error => {
           console.log(error);
@@ -77,7 +79,7 @@ export class TutorialDetailsComponent implements OnInit {
           this.router.navigate(['/tutorials']);
         },
         error => {
-          console.log(error);
+          console.error(error);
         });
   }
 }
